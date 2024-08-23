@@ -37,8 +37,6 @@ export default function AppBar() {
 
   // Handlers
   const handleNotificationClick = (notification: Notification) => {
-    // TODO: use enum for the notification type
-    // TODO: think of the message handling should be here or after the notification is marked as seen
     if (notification.type === NotificationType.PlatformUpdate) {
       alert("1.2.3");
     } else if (notification.type === NotificationType.CommentTag) {
@@ -106,7 +104,7 @@ export default function AppBar() {
           </Popover.Trigger>
           <Popover.Content
             align="end"
-            className="bg-white p-4 rounded-md shadow-lg w-64"
+            className="bg-white p-4 rounded-md shadow-lg w-64 overflow-y-scroll h-screen"
             sideOffset={10}
           >
             <div className="text-gray-700">
