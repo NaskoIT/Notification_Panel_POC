@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { TRPCProvider } from "./components/trpc-provider";
+import "@radix-ui/themes/styles.css";
+import { Theme } from "@radix-ui/themes";
+import AppBar from "./components/app-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +20,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <TRPCProvider>
-        <body className={inter.className}>{children}</body>
-      </TRPCProvider>
+      <body className={inter.className}>
+        <TRPCProvider>
+          <Theme>
+            <AppBar />
+            {children}
+          </Theme>
+        </TRPCProvider>
+      </body>
     </html>
   );
 }

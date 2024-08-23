@@ -14,9 +14,9 @@ datasource db {
 }
 
 model Notification {
-  id        Int      @id @default(autoincrement())
-  type      String
-  message   String
-  read      Boolean  @default(false)
-  createdAt DateTime @default(now())
+  id            Int      @id @default(autoincrement())
+  type          String
+  message       String
+  read          Boolean  @default(false)
+  createdAt     DateTime @default(now())
 }
