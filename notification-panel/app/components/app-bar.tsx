@@ -37,22 +37,22 @@ export default function AppBar() {
 
   // Handlers
   const handleNotificationClick = (notification: Notification) => {
-    if (notification.type === NotificationType.PlatformUpdate) {
-      alert("1.2.3");
-    } else if (notification.type === NotificationType.CommentTag) {
-      router.push("/comments");
-    } else if (notification.type === NotificationType.AccessGranted) {
-      router.push("/chats");
-    } else if (notification.type === NotificationType.JoinWorkspace) {
-      router.push("/workspace");
-    }
-
     if (!notification.read) {
       markAsReadMutation.mutate(
         { id: notification.id },
         {
           onSuccess: () => {
             utils.notifications.invalidate();
+            
+            if (notification.type === NotificationType.PlatformUpdate) {
+              alert("1.2.3");
+            } else if (notification.type === NotificationType.CommentTag) {
+              router.push("/comments");
+            } else if (notification.type === NotificationType.AccessGranted) {
+              router.push("/chats");
+            } else if (notification.type === NotificationType.JoinWorkspace) {
+              router.push("/workspace");
+            }
           },
         }
       );
